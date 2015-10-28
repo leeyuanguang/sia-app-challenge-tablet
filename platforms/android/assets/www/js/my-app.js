@@ -38,9 +38,9 @@ var ptrContent = $$('.pull-to-refresh-content');
 ptrContent.on('refresh', function (e) {
     // Emulate 2s loading
     setTimeout(function () {
-        var itemHTML = '<div class="list-block cards-list col-50 tablet-33"> <ul> <li class="card swipeout"> <div class="swipeout-content"> <div class="card-header">Blanket</div><div class="card-content"> <div class="card-content-inner"> <img src="img/inflightservice/amenities/blanket.jpg" style="width: 100%;"/> few seconds ago </div></div><div class="card-footer"><div>Seat 71A</div><div>Free</div></div></div><div class="swipeout-actions-right"> <a href="#" class="bg-indigo swipeout-delete">Fulfilled</a> </div><div class="swipeout-actions-left"> <a href="#" class="bg-orange swipeout-delete">Cancel</a> </div></li></ul> </div>'
+        var itemHTML = '<div class="list-block cards-list col-50 tablet-33"> <ul> <li class="card swipeout"> <div class="swipeout-content"> <div class="card-header">2015 F1 Pen Set</div><div class="card-content"> <div class="card-content-inner"> <img src="img/krisair/f1collectibles/pen.jpg" style="width: 100%"/> few seconds ago </div></div><div class="card-footer"><div>Seat 25A</div><div class="color-green">Paid</div></div></div><div class="swipeout-actions-right"> <a href="#" class="bg-indigo swipeout-delete">Fulfilled</a> </div><div class="swipeout-actions-left"> <a href="#" class="bg-orange swipeout-delete">Cancel</a> </div></li></ul> </div><div class="list-block cards-list col-50 tablet-33"> <ul> <li class="card swipeout"> <div class="swipeout-content"> <div class="card-header">2015 F1 Racing Car Earpiece</div><div class="card-content"> <div class="card-content-inner"> <img src="img/krisair/f1collectibles/earpiece.jpg" style="width: 100%"/> few seconds ago </div></div><div class="card-footer"><div>Seat 25A</div><div class="color-green">Paid</div></div></div><div class="swipeout-actions-right"> <a href="#" class="bg-indigo swipeout-delete">Fulfilled</a> </div><div class="swipeout-actions-left"> <a href="#" class="bg-orange swipeout-delete">Cancel</a> </div></li></ul> </div>'
         // Prepend new list element
-        ptrContent.find('test').prepend(itemHTML);
+        ptrContent.find('span').append(itemHTML);
         // When loading done, we need to reset it
         myApp.pullToRefreshDone();
     }, 2000);

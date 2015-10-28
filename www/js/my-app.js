@@ -25,6 +25,13 @@ myApp.onPageInit('index', function (page) {
             myApp.hideIndicator();
         }, 1500);
     });
+    
+    $$('.update-status').on('click', function () {
+        myApp.showIndicator();
+        setTimeout(function () {
+            myApp.hideIndicator();
+        }, 2500);
+    });
 });
 
 // Dummy Content
