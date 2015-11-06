@@ -34,10 +34,70 @@ myApp.onPageInit('index', function (page) {
 });
 //update qty
 myApp.onPageInit('krisair-category-listing', function (page) {
-    $$('.update-qty').on('click', function () {
-        alert("hi");
+    var qty1 = myApp.formGetData("qty1");
+    var stockAlert1 = myApp.formGetData("stockAlert1");
+    if (!qty1) {
+        qty1 = 5;
+    } else {
+        $$(page.container).find('div[id="qty1"]').text(qty1);
+    }
+    if (!stockAlert1) {
+        stockAlert1 = 0;
+    } else if (qty1 <= stockAlert1) {
+        $('#qty1').css("color", "red");
+    } else {
+        $('#qty1').css("color", "#757575");
+    }
+    $$('.decrease-qty1').on('click', function () {
+        qty1 = $$(page.container).find('div[id="qty1"]').text();
+        $$(page.container).find('div[id="qty1"]').text(parseInt(qty1) - 1);
+        qty1 = $$(page.container).find('div[id="qty1"]').text();
+        myApp.formStoreData('qty1', qty1);
+
+        if (qty1 <= stockAlert1) {
+            $('#qty1').css("color", "red");
+        } else {
+            $('#qty1').css("color", "#757575");
+        }
+    });
+    $$('.increase-qty1').on('click', function () {
+        qty1 = $$(page.container).find('div[id="qty1"]').text();
+        $$(page.container).find('div[id="qty1"]').text(parseInt(qty1) + 1);
+        qty1 = $$(page.container).find('div[id="qty1"]').text();
+        myApp.formStoreData('qty1', qty1);
+
+        if (qty1 <= stockAlert1) {
+            $('#qty1').css("color", "red");
+        } else {
+            $('#qty1').css("color", "#757575");
+        }
+    });
+    $$('.update-qty1').on('click', function () {
+        myApp.prompt("Update new quantity", function (value) {
+            $$(page.container).find('div[id="qty1"]').text(value);
+            myApp.formStoreData('qty1', value);
+        });
+        if (qty1 <= stockAlert1) {
+            $('#qty1').css("color", "red");
+        } else {
+            $('#qty1').css("color", "#757575");
+        }
+    });
+    $$('.stock-alert1').on('click', function () {
+        myApp.prompt("Set stock alert level", function (value) {
+            myApp.formStoreData('stockAlert1', value);
+            stockAlert1 = value;
+
+            if (qty1 <= stockAlert1) {
+                $('#qty1').css("color", "red");
+            } else {
+                $('#qty1').css("color", "#757575");
+            }
+        });
+
     });
 });
+
 
 // Dummy Content
 var songs = ['Yellow Submarine', 'Don\'t Stop Me Now', 'Billie Jean', 'Californication'];
@@ -56,10 +116,4 @@ ptrContent.on('refresh', function (e) {
         // When loading done, we need to reset it
         myApp.pullToRefreshDone();
     }, 2000);
-});
-
-
-var jqueryReady = $.Deferred();
-$(function () {
-    jqueryReady.resolve();
 });
