@@ -33,6 +33,12 @@ myApp.onPageInit('index', function (page) {
         }, 2500);
     });
 });
+//update qty
+myApp.onPageInit('krisair-category-listing', function (page) {
+    $$('.update-qty').on('click', function () {
+        alert("hi");
+    });
+});
 
 // Dummy Content
 var songs = ['Yellow Submarine', 'Don\'t Stop Me Now', 'Billie Jean', 'Californication'];
